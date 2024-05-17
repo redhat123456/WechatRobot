@@ -1,2 +1,128 @@
-# WechatRobot
-This is a microblogging assistant that can improve office efficiency.✒
+# Wechat mass assistant
+
+## 介绍🎈
+
+这个仓库是一个Wechat群发助手，旨在提高办公室的工作效率。在日常工作中，我们常常需要手动发送各种每日作业和打卡任务，这既耗时又容易出错。为了解决这个问题，我根据python库[PyOfficeRobot](https://github.com/CoderWanFeng/PyOfficeRobot)开发了这款基于Python的助手工具。
+
+## 起因🎁
+
+在2024年3月，我承担起了一项新职责，即为各个机构的学员定期分配打卡任务。起初，由于群组数量相对较少，我可以轻松手动安排每日的打卡任务。然而，随着任务量的激增，手动操作逐渐变得力不从心，难以应对。在日常办公中，我频繁地需要手动发送每日作业和打卡任务给团队成员，这种重复性劳动不仅消耗了大量宝贵的时间，还因疏忽而时有遗漏或错误的情况发生。为了改善这一状况，我积极寻求一种自动化的解决方案，以提高工作效率并减少错误率。
+
+## 解决方案✨
+
+在寻找解决方案的过程中，我发现了[PyOfficeRobot](https://github.com/CoderWanFeng/PyOfficeRobot)这个Python库，它提供了许多有用的功能，可以帮助我实现自动化办公。基于这个库，我开发了这款Wechat mass assistant。通过配置相应的参数和任务，助手可以自动发送每日的作业和打卡任务，大大减少了手动操作的时间和错误率。
+
+## 使用效果🎃
+
+使用Wechat mass assistant后，我的工作效率得到了显著的提高。现在，我只需要简单地配置一次任务，助手就可以自动完成后续的发送工作。这不仅节省了我大量的时间，还让我能够更专注于其他更重要的工作。
+
+我还使用录频软件录了一段，使用效果如下：
+
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112455879952896&bvid=BV1aXMmeCEkR&cid=500001548730309&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+## 指北（如何使用）📐
+
+1、先将本仓库克隆到本地。
+
+```
+git clone https://github.com/redhat123456/WechatRobot
+```
+
+2、安装依赖。
+
+```
+pip install PyOfficeRobot
+```
+
+到此处就已经完成相关依赖安装了，这串代码非常的简单。
+
+## 配置参数📝
+
+### 发送讯息
+
+```
+PyOfficeRobot.chat.send_message(who='Tanger', message='你好')
+```
+
+### 发送文件
+
+```
+file_path = r'C:\Users\Tanger\Desktop\工作\code\du.mp4'
+PyOfficeRobot.file.send_file(who='Tanger', file=file_path)
+```
+
+这就是基本的操作命令
+
+### For循环批量发送
+
+读者可以使用类似于笔者使用的for循环批量发送讯息和文件。
+
+可以先定义一个'user.csv'用于存放需要发送打卡任务的群名称，例如：
+
+```
+users,users_name,users_nianji,id
+林碧霞（初一）培优群,@浮云 碧霞妈妈，家长好，,7,2
+黄彦泽（初一）五象培优群,@彦泽妈妈 彦泽妈妈，家长好,7,5
+14:30-18:35 英语、语文培优群,@何雨宸妈妈 @文雅彤妈妈 @韦珺霖妈妈 @何芬&灿妈  雅彤妈妈、珺霖妈妈、雨宸妈妈、昕灿妈妈，各位孩子妈妈家长好,7,6
+刘佳琦、刘耀翔培优群,@@Ying🍻🍻🍻 佳琦妈妈，家长好，这是佳琦的语文阅读作业，,7,11
+周瑾瑜（初二）培优群,@lucky梁小小 瑾瑜妈妈，家长好,8,24
+韦诗瑶（初二）培优群,@诗瑶妈妈 诗瑶妈妈，家长好,8,25
+赵乐伟（四年级）乐琦初二培优群,@A强13687888922（鑫相聚五金） 乐琦父亲，家长好，这是乐琦的语文阅读作业，,8,26
+韦熠初二培优群,@一抹樱粉，韦熠妈妈，家长好，,8,28
+赵蔡洺佑（初三）培优群,@蔡欣 ，洺佑妈妈，家长好,9,37
+```
+
+然后根据我们需要的内容，编辑文案信息，例如：
+
+```
+def generate_daily_message():
+    str='《钢铁是怎样炼成的》的第一章到第三章这三章内容。'
+    ignore1 = '为了帮助大家更好地掌握课程内容，提升学习效率，我们决定每天为大家布置一些针对性的小作业。这些作业不仅将覆盖课堂的重点知识，还能锻炼大家的实践能力，从而更全面地提升大家的学习效果。请大家务必认真对待，按时完成，相信在不断的练习中，大家会取得更大的进步。'
+    ignore2 = '今天的作业安排如下：'
+    task1 = '1、请大家仔细阅读' + str + '在阅读的过程中，请认真思考并体会其中的情感和寓意。'
+    task2 = '2、为了记录大家的阅读成果，相信在不断的练习中，大家会取得更大的进步。请家长协助使用手机录制一段2分钟的阅读视频。请同学们在家长的陪伴下，选择一个安静的环境，大声朗读所阅读的内容，并尽量展现自己的阅读情感和节奏感。'
+    task3 = '3、录制完成后，请大家将视频文件发到微信群里。'
+    tab = '{ctrl}{ENTER}'
+    content = f"{ignore1}{tab}{ignore2}{tab}{task1}{tab}{task2}{tab}{task3}"
+    return content
+```
+
+最后，使用for循环批量发送即可。
+
+```
+for index, user in enumerate(users):
+    # 在这里你可以根据索引index来访问数组的不同元素
+    # 构造消息，包括用户名称和每日消息
+    print(f"Sending message to {users[index]}")
+    nianji = users_nianji[index]  # 获取用户的年级
+    if nianji == 7:
+        message = f"{users_name[index]}{generate_daily_message()}"
+    elif nianji == 8:
+        message = f"{users_name[index]}{generate_daily_message()}"
+    elif nianji == 9:
+        message = f"{users_name[index]}{generate_daily_message()}"
+    
+    # 发送消息
+    print(message)
+    PyOfficeRobot.chat.send_message(who=users[index], message=message)
+    # 发送文件
+
+    file_path = r'C:\Users\Tanger\Desktop\工作\code\du.mp4'
+    PyOfficeRobot.file.send_file(who=users[index], file=file_path)
+    
+    #发送结尾消息
+    PyOfficeRobot.chat.send_message(who=users[index], message=end())
+```
+可以以年级为发送不同文件的依据，这样就可以实现针对不同人的不同作业了。👌
+
+上述步骤就是比较重要的代码了，读者可以仔细阅读，并尝试使用。
+
+## 注意事项⚠
+
+- 请确保你的Python环境已经正确安装，并且版本符合要求。
+- 在配置参数时，请确保填写的信息准确无误，以避免发送错误或遗漏任务。
+- 如有任何疑问或问题，请随时联系我（比如提交个issue）或查看相关文档。
+
+## 致谢
+
+感谢[CoderWanFeng(程序员晚枫)](https://github.com/CoderWanFeng)开发的[PyOfficeRobot](https://github.com/CoderWanFeng/PyOfficeRobot)库，它为我提供了强大的技术支持和灵感来源。没有这个库，我可能无法完成这款助手工具的开发。同时，也要感谢所有在开发过程中给予我帮助和支持的人。🎉

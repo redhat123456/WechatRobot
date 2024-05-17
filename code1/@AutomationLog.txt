@@ -1,0 +1,2 @@
+2024-04-29 15:32:16.874 WeChatType.py[195] roll_to -> 2024-04-29 15:33:58.343 WeChatType.py[159] GetSessionList -> Find Control Timeout(10s): {ControlType: ListItemControl}
+2024-04-29 15:54:15.980 WeChatType.py[217] SendMsg -> 2024-04-30 16:10:14.028 WeChatType.py[217] SendMsg -> 2024-05-07 16:31:12.469 WeChatType.py[217] SendMsg -> 

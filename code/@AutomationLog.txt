@@ -1,0 +1,2 @@
+2024-05-16 17:25:02.522 WeChatType.py[217] SendMsg -> Find Control Timeout(10s): {SubName: '林碧霞（初一）培优群', ControlType: EditControl}
+2024-05-16 17:26:24.561 WeChatType.py[217] SendMsg -> 
